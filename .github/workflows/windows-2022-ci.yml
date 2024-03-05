@@ -17,6 +17,6 @@ jobs:
   scripts:
     runs-on: windows-2022
     steps:
-      - run: echo "This step runs in CMD on Windows explicitly"
+      - run: dir
         shell: cmd
-        working-directory: windows
+#        working-directory: windows
