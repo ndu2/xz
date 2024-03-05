@@ -9,7 +9,12 @@
 name: Windows-CI
 
 # Only run the Windows CI manually since it takes much longer than the others.
-on: workflow_dispatch
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   POSIX:
