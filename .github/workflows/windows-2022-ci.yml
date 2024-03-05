@@ -2,6 +2,17 @@
 
 name: Windows-2022-CI
 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows running workflow manually
+  workflow_dispatch:
+
+ 
 jobs:
   scripts:
     runs-on: windows-2022
