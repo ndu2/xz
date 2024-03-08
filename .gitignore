@@ -111,4 +111,5 @@ coverage
 
 /windows/*/.vs
 /windows/*/liblzma.vcxproj.user
+/windows/build*/*
 /.vscode/
