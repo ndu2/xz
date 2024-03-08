@@ -1,0 +1,63 @@
+# SPDX-License-Identifier: 0BSD
+
+name: Windows-2022-CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows running workflow manually
+  workflow_dispatch:
+    inputs:
+      publishbuilds:
+        required: false
+        description: Publish Builds?
+        type: boolean
+        default: false
+
+jobs:
+  VS2022-x64-MSVC:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - run: build-with-vs2022.bat x64 v143
+        shell: cmd
+        working-directory: windows
+  VS2022-x64-ClangCL:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - run: build-with-vs2022.bat x64 ClangCL
+        shell: cmd
+        working-directory: windows
+      - name: VS2022 Build Artifacts
+        if: inputs.publishbuilds
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name }}-win64
+          path: |
+            windows/build*/Release
+  VS2022-Win32-MSVC:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - run: build-with-vs2022.bat Win32 v143
+        shell: cmd
+        working-directory: windows
+  VS2022-Win32-ClangCL:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - run: build-with-vs2022.bat Win32 ClangCL
+        shell: cmd
+        working-directory: windows
+      - name: VS2022 Build Artifacts
+        if: inputs.publishbuilds
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name }}-win32
+          path: |
+            windows/build*/Release
