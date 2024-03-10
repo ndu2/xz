@@ -56,6 +56,12 @@ check_thousand_sep(uint32_t slot)
 #endif
 
 
+#if defined(_WIN32) && !defined(__CYGWIN__)
+// _get_osfhandle when compiling with clang-cl
+#include <io.h>
+#endif
+
+
 extern void *
 xrealloc(void *ptr, size_t size)
 {
