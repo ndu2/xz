@@ -21,6 +21,7 @@ Introduction
     Visual Studio 2015 or later is required to build the command line
     tools.
 
+    MSVC 2017 and later have built-in support for CMake.
 
 Building
 --------
@@ -33,6 +34,8 @@ Building
     the MSVC compiler. Using clang-cl under MSVC should make inline
     assembly work (untested).
 
+    Script "build-with-vs2022.bat" is provided for convenience (and CI
+	builds).
 
 Notes
 -----
