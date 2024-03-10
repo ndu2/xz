@@ -23,14 +23,24 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
-      - run: build-with-vs2022.bat x64 v143
+      - run: build-with-vs2022.bat x64 v143 build
+        name: Build (Visual Studio 2022, x64)
+        shell: cmd
+        working-directory: windows
+      - run: build-with-vs2022.bat x64 v143 test
+        name: Test (Visual Studio 2022, x64)
         shell: cmd
         working-directory: windows
   VS2022-x64-ClangCL:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
-      - run: build-with-vs2022.bat x64 ClangCL
+      - run: build-with-vs2022.bat x64 ClangCL build
+        name: Build (Visual Studio 2022, clang-cl, x64)
+        shell: cmd
+        working-directory: windows
+      - run: build-with-vs2022.bat x64 ClangCL test
+        name: Test (Visual Studio 2022, clang-cl, x64)
         shell: cmd
         working-directory: windows
       - name: VS2022 Build Artifacts
@@ -44,14 +54,24 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
-      - run: build-with-vs2022.bat Win32 v143
+      - run: build-with-vs2022.bat Win32 v143 build
+        name: Build (Visual Studio 2022, x86)
+        shell: cmd
+        working-directory: windows
+      - run: build-with-vs2022.bat Win32 v143 test
+        name: Test (Visual Studio 2022, x86)
         shell: cmd
         working-directory: windows
   VS2022-Win32-ClangCL:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
-      - run: build-with-vs2022.bat Win32 ClangCL
+      - run: build-with-vs2022.bat Win32 ClangCL build
+        name: Build (Visual Studio 2022, clang-cl, x86)
+        shell: cmd
+        working-directory: windows
+      - run: build-with-vs2022.bat Win32 ClangCL test
+        name: Test (Visual Studio 2022, clang-cl, x86)
         shell: cmd
         working-directory: windows
       - name: VS2022 Build Artifacts
